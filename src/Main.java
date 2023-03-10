@@ -9,17 +9,12 @@ public class Main {
         task1.setTaskDescription("Описание задачи 1");
         task1.setTaskStatus(TaskStatus.NEW);
         taskManager.createTask(task1);
-        System.out.println(task1);
 
         Task task2 = new Task();
         task2.setTaskName("Задача 2");
         task2.setTaskDescription("Описание задачи 2");
         task2.setTaskStatus(TaskStatus.NEW);
         taskManager.createTask(task2);
-        System.out.println(task2);
-
-        System.out.println("Список всех задач: ");
-        System.out.println(taskManager.findAllTasks());
 
         Epic epic1 = new Epic();
         epic1.setTaskName("Эпик 1");
@@ -45,13 +40,6 @@ public class Main {
         secondSubtaskEpic1.setTaskStatus(TaskStatus.NEW);
         taskManager.createSubtask(secondSubtaskEpic1);
 
-//        Subtask thirdSubtaskEpic1 = new Subtask();
-//        thirdSubtaskEpic1.setEpicId(3);
-//        thirdSubtaskEpic1.setTaskName("Подзадача номер 3 Эпика 1");
-//        thirdSubtaskEpic1.setTaskDescription("Описание подзадачи номера 3 Эпика 1");
-//        thirdSubtaskEpic1.setTaskStatus(TaskStatus.NEW);
-//        taskManager.createSubtask(thirdSubtaskEpic1);
-
         Subtask firstSubtaskEpic2 = new Subtask();
         firstSubtaskEpic2.setEpicId(4);
         firstSubtaskEpic2.setTaskName("Подзадача номер 1 Эпика 2");
@@ -59,13 +47,8 @@ public class Main {
         firstSubtaskEpic2.setTaskStatus(TaskStatus.NEW);
         taskManager.createSubtask(firstSubtaskEpic2);
 
-//        Subtask secondSubtaskEpic2 = new Subtask();
-//        secondSubtaskEpic2.setEpicId(4);
-//        secondSubtaskEpic2.setTaskName("Подзадача номер 2 Эпика 2");
-//        secondSubtaskEpic2.setTaskDescription("Описание подзадачи номера 2 Эпика 2");
-//        secondSubtaskEpic2.setTaskStatus(TaskStatus.NEW);
-//        taskManager.createSubtask(secondSubtaskEpic2);
-
+        System.out.println("Список всех задач: ");
+        System.out.println(taskManager.findAllTasks());
         System.out.println("Список всех подзадач: ");
         System.out.println(taskManager.findAllSubtasks());
         System.out.println("Список всех Эпиков: ");
@@ -79,15 +62,27 @@ public class Main {
         firstSubtaskEpic1.setTaskStatus(TaskStatus.DONE);
         taskManager.updateSubtask(firstSubtaskEpic1);
 
+        task1.setTaskName("Задача 1 , но с изменением");
+        task1.setTaskDescription("Я поменялся!");
+        task1.setTaskStatus(TaskStatus.DONE);
+
+        System.out.println("Список всех задач: ");
+        System.out.println(taskManager.findAllTasks());
         System.out.println("Список всех подзадач: ");
         System.out.println(taskManager.findAllSubtasks());
         System.out.println("Список всех Эпиков: ");
         System.out.println(taskManager.findAllEpics());
 
-        taskManager.deleteSubtaskById(5);
+        System.out.println("Получение списка всех подзадач определенного эпика");
+        System.out.println(taskManager.getAllSubtasksOfEpic(epic1));
 
         System.out.println("ВСЁ РАБОТАЕТ ????");
 
+        taskManager.deleteEpicById(3);
+        taskManager.deleteTaskById(1);
+
+        System.out.println("Список всех задач: ");
+        System.out.println(taskManager.findAllTasks());
         System.out.println("Список всех подзадач: ");
         System.out.println(taskManager.findAllSubtasks());
         System.out.println("Список всех Эпиков: ");
